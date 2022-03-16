@@ -125,6 +125,8 @@ registerElement('a-asset-item', {
           });
         }, function handleOnError (xhr) {
           self.emit('error', {xhr: xhr});
+          self.data = xhr.message;
+          setTimeout(function load () { ANode.prototype.load.call(self); });
         });
       }
     }
